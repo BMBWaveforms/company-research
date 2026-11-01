@@ -1,0 +1,6 @@
+interface:
+  display_name: "HJH 公司与客户调研"
+  short_description: "整合公司业务、技术与财务报告，并建立客户或投资人拜访底图"
+  default_prompt: "使用 $hjh-company-research 调研这个主体；公司模式输出五模块整合报告，拜访模式补充客户或投资人决策信息。"
+policy:
+  allow_implicit_invocation: true
