@@ -1,6 +1,6 @@
-# HJH 公司与客户调研
+# 公司与客户调研
 
-`hjh-company-research`（v4.1）是一份 Agent Skill：把公开信息与用户提供的一手材料整理成可追溯、可快速决策的报告，贯通公司总览、业务、技术、财务、商业质量与风险。界面显示名为「HJH 公司与客户调研」。正式触发名是 `$hjh-company-research`；旧名称 `$customer-research` 由独立兼容入口转发到本 Skill，新提示词与新自动化使用正式名称。
+`company-research`（v4.1）是一份 Agent Skill：把公开信息与用户提供的一手材料整理成可追溯、可快速决策的报告，贯通公司总览、业务、技术、财务、商业质量与风险。界面显示名为「公司与客户调研」。正式触发名是 `$company-research`；旧名称 `$customer-research` 由独立兼容入口转发到本 Skill，新提示词与新自动化使用正式名称。
 
 ## 功能、模式与深度
 
@@ -22,7 +22,7 @@
 
 深度控制篇幅与证据密度，各深度共用同一事实标准。`quick` 同样不得用融资额、估值、注册资本或媒体估算代替营收。
 
-`agents/openai.yaml` 允许隐式调用（`allow_implicit_invocation: true`）。其默认提示为：使用 `$hjh-company-research` 调研主体；公司模式输出五模块整合报告，拜访模式补充客户或投资人决策信息。
+`agents/openai.yaml` 允许隐式调用（`allow_implicit_invocation: true`）。其默认提示为：使用 `$company-research` 调研主体；公司模式输出五模块整合报告，拜访模式补充客户或投资人决策信息。
 
 ## 安装与调用
 
@@ -30,12 +30,12 @@
 
 ```bash
 mkdir -p ~/.codex/skills
-git clone https://github.com/BMBWaveforms/company-research.git ~/.codex/skills/hjh-company-research
+git clone https://github.com/BMBWaveforms/company-research.git ~/.codex/skills/company-research
 ```
 
-GitHub 仓库名是 `company-research`，安装目录使用技能名 `hjh-company-research`。其他遵循同一 `SKILL.md` 目录约定的运行时，把包含 `SKILL.md` 的仓库根目录放进其 skills 目录即可。
+技能名、安装目录与 GitHub 仓库名都是 `company-research`。其他遵循同一 `SKILL.md` 目录约定的运行时，把包含 `SKILL.md` 的仓库根目录放进其 skills 目录即可。
 
-在对话中用 `$hjh-company-research` 触发。最小输入是待研究主体；未说明调研目的时，按「快速了解公司」处理。可选输入包括官网、股票代码、地区、法人全称或品牌名、目的与关注问题、`mode`、`depth`、输出路径，以及年报、招股书、白皮书、会议纪要、合同、RFP 或用户指定的竞对。
+在对话中用 `$company-research` 触发。最小输入是待研究主体；未说明调研目的时，按「快速了解公司」处理。可选输入包括官网、股票代码、地区、法人全称或品牌名、目的与关注问题、`mode`、`depth`、输出路径，以及年报、招股书、白皮书、会议纪要、合同、RFP 或用户指定的竞对。
 
 ## 仓库结构
 
@@ -57,8 +57,6 @@ evals/cases.json                  Loading、Hero Query、hard gate 与 Judge
 - `references/client-investor-extension.md`：`client` 或 `investor`。
 - `references/discovery-question-quality-standard.md`：生成或修复会议问题。
 - 用户本轮提供的年报、会议纪要、RFP、合同、邮件、产品手册、白皮书或截图优先于历史 reference。
-
-`references/hejinhua-experience.md`、`references/archetypes-library.md`、`references/post-interview-intel-loopback.md`、`references/html-component-library.md` 是历史面试资产，本 Skill 默认不加载；后者的彩色组件也不用于当前公司报告 HTML。
 
 ## 报告生成与审计
 
@@ -115,7 +113,7 @@ python3 {skill_dir}/scripts/audit_client_report.py <MD绝对路径> --strict --m
 
 ## 评测
 
-回归用例在 [`evals/cases.json`](evals/cases.json)（`version` 4.1，`skill` 为 `hjh-company-research`）。文件包含 Loading 正例与负例、全部 Hero Query、hard gates，以及 company 模式的 100 分 Judge。通过规则是 `score >= 85` 且没有 hard gate 失败。`client` / `investor` 的 Hero Query 使用各自期望断言，加上全模式及适用的 HTML hard gates。`judge_rubric` 的五模块评分范围是 `company`。
+回归用例在 [`evals/cases.json`](evals/cases.json)（`version` 4.1，`skill` 为 `company-research`）。文件包含 Loading 正例与负例、全部 Hero Query、hard gates，以及 company 模式的 100 分 Judge。通过规则是 `score >= 85` 且没有 hard gate 失败。`client` / `investor` 的 Hero Query 使用各自期望断言，加上全模式及适用的 HTML hard gates。`judge_rubric` 的五模块评分范围是 `company`。
 
 修改 description、模式边界、财务口径、贯通矩阵或报告 Gate 后，用该文件回归 Loading 正负例、全部 Hero Query 和 100 分 Judge。仓库未附带评测运行器。
 
