@@ -1,14 +1,14 @@
 ---
-name: hjh-company-research
+name: company-research
 description: >
   用户要做公司速查、企业画像、公开信息尽调，或为客户/投资人拜访建立公司底图时使用；
   产出贯通公司总览、业务报告、技术报告、财务、商业质量和风险的整合报告。面试准备、
   Offer 决策、单产品拆解、专利布局或 FTO 分别使用对应专用 Skill。
 ---
 
-# HJH 公司与客户调研 v4.1
+# 公司与客户调研 v4.1
 
-正式触发名是 `$hjh-company-research`。旧名称 `$customer-research` 由独立兼容入口转发到本 Skill；新提示词和新自动化统一使用正式名称。
+正式触发名是 `$company-research`。旧名称 `$customer-research` 由独立兼容入口转发到本 Skill；新提示词和新自动化统一使用正式名称。
 
 ## 目标
 
@@ -56,8 +56,6 @@ description: >
 - `references/client-investor-extension.md`：`client` 或 `investor` 模式。
 - `references/discovery-question-quality-standard.md`：需要生成或修复会议问题时。
 - 用户本轮提供的年报、会议纪要、RFP、合同、邮件、产品手册、白皮书或截图：始终优先于历史 reference。
-
-`references/hejinhua-experience.md`、`references/archetypes-library.md`、`references/post-interview-intel-loopback.md`、`references/html-component-library.md` 是历史面试资产，不作为本 Skill 的默认输入；后者的彩色组件也不适用于当前公司报告 HTML。
 
 实际联网时先按当前环境加载 `web-access:web-access`，并遵守其工具路由。结构化工商、证券或商业数据库是增强项，不得把是否配置某一私有 API 当作能否完成报告的前提。
 
@@ -213,7 +211,7 @@ python3 {skill_dir}/scripts/audit_client_report.py <MD绝对路径> --strict --m
 
 ## 版本
 
-- v4.1 · 2026-09-10：正式英文名改为 `hjh-company-research`；保留 `customer-research` 兼容入口，避免历史提示词失效。
+- v4.1 · 2026-09-10：正式英文名定为 `company-research`；保留 `customer-research` 兼容入口，避免历史提示词失效。
 - v4.0 · 2026-09-08：将 `company` 收敛为五模块整合报告；业务报告与技术报告可独立阅读但不重复拆档；新增产品—客户/付费方—交付—技术—变现—来源贯通矩阵、一致性 Gate、技术证据降级规则，以及白底柔黑的公司报告 HTML 规范。
-- v3.0 · 2026-09-04：把 `company` 升级为一等模式；新增 quick/standard/deep、业务-技术-财务-商业四维框架、集团与财务口径、来源账本、模式化 Gate、对抗审查、Loading/E2E Eval 与确定性 HTML 构建；移除公司模式对历史面试 references 的默认加载。
+- v3.0 · 2026-09-04：把 `company` 升级为一等模式；新增 quick/standard/deep、业务-技术-财务-商业四维框架、集团与财务口径、来源账本、模式化 Gate、对抗审查、Loading/E2E Eval 与确定性 HTML 构建。
 - v2.0 · 2026-07-28：主体排歧、L0-L5 证据模型、当前业务核实、MD 单一真源与 HTML 一致性验收。
